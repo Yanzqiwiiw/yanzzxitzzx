@@ -1,0 +1,780 @@
+<html lang="id">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Jual Hosting
+  </title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: "Inter", sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      position: relative;
+    }
+    /* Aurora background animation */
+    #aurora-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -2;
+      overflow: hidden;
+      pointer-events: none;
+      background: linear-gradient(270deg, #6a4ee7, #25d366, #e8491d, #6a4ee7);
+      background-size: 800% 800%;
+      animation: auroraMove 30s ease infinite;
+      filter: blur(80px);
+      opacity: 0.7;
+    }
+    @keyframes auroraMove {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    /* Lightning container */
+    #lightning-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 9999;
+      overflow: visible;
+    }
+    /* Lightning bolt style */
+    .lightning-bolt {
+      position: absolute;
+      width: 6px; /* increased width */
+      height: 110px; /* increased height */
+      background: linear-gradient(45deg, #fff, #ffff99);
+      filter: drop-shadow(0 0 8px #ffffcc);
+      opacity: 0;
+      transform-origin: top center;
+      clip-path: polygon(
+        50% 0%,
+        60% 20%,
+        40% 20%,
+        55% 50%,
+        35% 50%,
+        50% 80%,
+        40% 80%,
+        50% 100%,
+        70% 60%,
+        55% 60%,
+        70% 30%,
+        50% 30%
+      );
+      animation-fill-mode: forwards;
+    }
+    /* Lightning flash animation */
+    @keyframes lightningFlash {
+      0% {
+        opacity: 0;
+        transform: translateY(0) scaleY(1) rotate(0deg);
+        filter: drop-shadow(0 0 8px #ffffcc);
+      }
+      10% {
+        opacity: 1;
+        filter: drop-shadow(0 0 30px #ffffcc);
+      }
+      30% {
+        opacity: 0.8;
+        filter: drop-shadow(0 0 20px #ffffcc);
+      }
+      50% {
+        opacity: 0;
+        transform: translateY(30px) scaleY(1.2) rotate(10deg);
+        filter: drop-shadow(0 0 8px #ffffcc);
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+    /* Lightning strike animation with delay */
+    .strike1 {
+      animation: lightningFlash 1.2s ease-in-out infinite;
+      animation-delay: 0s;
+    }
+    .strike2 {
+      animation: lightningFlash 1.2s ease-in-out infinite;
+      animation-delay: 2.7s;
+    }
+    .strike3 {
+      animation: lightningFlash 1.2s ease-in-out infinite;
+      animation-delay: 5.4s;
+    }
+    /* Positions for lightning bolts on edges */
+    .left-edge {
+      left: 5vw;
+      top: 10vh;
+      transform: rotate(-10deg);
+      height: 110px;
+      width: 6px;
+    }
+    .left-edge2 {
+      left: 8vw;
+      top: 60vh;
+      transform: rotate(15deg);
+      height: 130px;
+      width: 6px;
+    }
+    .right-edge {
+      right: 5vw;
+      top: 20vh;
+      transform: rotate(10deg);
+      height: 120px;
+      width: 6px;
+    }
+    .right-edge2 {
+      right: 8vw;
+      top: 65vh;
+      transform: rotate(-15deg);
+      height: 115px;
+      width: 6px;
+    }
+    /* New box style for header text */
+    header .box-text {
+      display: inline-block;
+      background: rgba(106, 78, 231, 0.85);
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1.75rem;
+      max-width: 90vw;
+      margin: 0 auto;
+      box-shadow: 0 0 15px rgba(106, 78, 231, 0.8);
+      color: white;
+      line-height: 1.2;
+      user-select: none;
+    }
+    header .box-text .info-text {
+      display: block;
+      font-weight: 500;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+      max-width: 600px;
+      color: #d1d5db; /* lighter gray */
+      font-family: "Inter", sans-serif;
+      user-select: text;
+    }
+    @media (min-width: 640px) {
+      header .box-text {
+        font-size: 2.25rem;
+        padding: 1rem 2rem;
+      }
+      header .box-text .info-text {
+        font-size: 1.125rem;
+      }
+    }
+    footer .yanz-box {
+      display: inline-block;
+      background: rgba(220, 38, 38, 0.15);
+      backdrop-filter: blur(6px);
+      padding: 0.5rem 1.25rem;
+      border-radius: 10px;
+      border: 2px solid #dc2626;
+      font-weight: 700;
+      font-size: 1.125rem;
+      color: #dc2626;
+      box-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
+      user-select: none;
+      transition: background-color 0.3s ease;
+      margin-bottom: 0.5rem;
+    }
+    footer .yanz-box:hover {
+      background: rgba(220, 38, 38, 0.3);
+    }
+    footer .yanz-info {
+      color: #dc2626;
+      font-size: 0.875rem;
+      max-width: 320px;
+      margin: 0 auto 1rem auto;
+      line-height: 1.3;
+      font-weight: 500;
+    }
+    @media (min-width: 640px) {
+      footer .yanz-box {
+        font-size: 1.25rem;
+        padding: 0.75rem 1.75rem;
+        margin-bottom: 0.75rem;
+      }
+      footer .yanz-info {
+        font-size: 1rem;
+        max-width: 400px;
+      }
+    }
+    /* Larger product cards with RGB border */
+    section.grid > article {
+      min-height: 360px;
+      padding: 1.5rem;
+      position: relative;
+      border-radius: 0.5rem;
+      background: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      transition: box-shadow 0.3s ease;
+      overflow: hidden;
+      z-index: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    section.grid > article:hover {
+      box-shadow: 0 0 20px rgba(106, 78, 231, 0.8);
+    }
+    section.grid > article::before {
+      content: "";
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      border-radius: 0.5rem;
+      padding: 2px;
+      background: linear-gradient(45deg, #6a4ee7, #25d366, #e8491d, #6a4ee7, #25d366, #e8491d);
+      background-size: 400% 400%;
+      animation: rgbBorder 8s linear infinite;
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude;
+      pointer-events: none;
+      z-index: -1;
+    }
+    @keyframes rgbBorder {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    section.grid > article img {
+      width: 112px;
+      height: 112px;
+      margin-bottom: 1rem;
+      z-index: 10;
+      position: relative;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+    section.grid > article h2 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      z-index: 10;
+      position: relative;
+      color: #1f2937;
+      font-weight: 600;
+    }
+    section.grid > article p {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      z-index: 10;
+      position: relative;
+      color: #4b5563;
+      white-space: pre-line;
+    }
+    section.grid > article .text-red-600 {
+      font-size: 1.375rem;
+      margin-bottom: 1.25rem;
+      z-index: 10;
+      position: relative;
+      font-weight: 700;
+      color: #dc2626;
+    }
+    section.grid > article button.order-btn {
+      padding-left: 1.75rem;
+      padding-right: 1.75rem;
+      padding-top: 0.875rem;
+      padding-bottom: 0.875rem;
+      font-size: 1rem;
+      z-index: 10;
+      position: relative;
+      background-color: #1f2937;
+      color: white;
+      border-radius: 0.375rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    section.grid > article button.order-btn:hover {
+      background-color: #dc2626;
+    }
+    /* Modal styles */
+    #payment-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 50;
+      padding: 1rem;
+    }
+    #payment-modal.active {
+      display: flex;
+    }
+    #payment-modal .modal {
+      background: white;
+      width: 100%;
+      max-width: 400px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+    #payment-modal .modal-header {
+      background: #6a4ee7;
+      color: white;
+      padding: 1rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    #payment-modal .modal-body {
+      padding: 1rem;
+    }
+    #payment-modal .product {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      font-size: 1.125rem;
+    }
+    #payment-modal .price {
+      margin-bottom: 1rem;
+      font-size: 1.125rem;
+      color: #dc2626;
+      font-weight: 700;
+    }
+    #payment-modal .qr {
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+    #payment-modal .qr img {
+      width: 150px;
+      height: auto;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+    #payment-modal .dana-number {
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      color: #6a4ee7;
+    }
+    #payment-modal .upload-section {
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    #payment-modal .upload-section input[type="file"] {
+      padding: 0.5rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      width: 100%;
+      max-width: 250px;
+    }
+    #payment-modal .whatsapp-btn {
+      background: #25D366;
+      color: white;
+      padding: 0.75rem;
+      text-align: center;
+      border-radius: 8px;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      font-size: 1rem;
+      user-select: none;
+    }
+    #payment-modal .whatsapp-btn:hover {
+      background: #1ebe57;
+    }
+    #payment-modal .confirm-btn {
+      background: #ccc;
+      color: #666;
+      padding: 0.75rem;
+      text-align: center;
+      border-radius: 8px;
+      cursor: not-allowed;
+      user-select: none;
+      font-weight: 600;
+    }
+    #payment-modal .close-btn {
+      background: #6a4ee7;
+      color: white;
+      padding: 0.75rem;
+      text-align: center;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      margin-top: 0.5rem;
+      user-select: none;
+    }
+    #payment-modal .close-btn:hover {
+      background: #5939c9;
+    }
+    @media (max-width: 480px) {
+      #payment-modal .modal {
+        width: 95%;
+      }
+      #payment-modal .qr img {
+        width: 120px;
+      }
+    }
+    /* Notification styles */
+    #notification {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(106, 78, 231, 0.9);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1rem;
+      box-shadow: 0 0 15px rgba(106, 78, 231, 0.8);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(100%);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      z-index: 100;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    #notification.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(0);
+    }
+    /* Sound button styles */
+    #sound-button {
+      position: fixed;
+      top: 50%;
+      right: 1rem;
+      transform: translateY(50%);
+      z-index: 110;
+      background: rgba(106, 78, 231, 0.85);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(106, 78, 231, 0.8);
+      transition: background-color 0.3s ease;
+    }
+    #sound-button:hover {
+      background: rgba(106, 78, 231, 1);
+    }
+    #sound-button:focus {
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
+    #sound-button i {
+      font-size: 1.5rem;
+    }
+    /* Zoom overlay styles */
+    #qr-zoom-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      cursor: zoom-out;
+      padding: 1rem;
+    }
+    #qr-zoom-overlay.active {
+      display: flex;
+    }
+    #qr-zoom-overlay img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.7);
+      user-select: none;
+      pointer-events: none;
+    }
+  </style>
+ </head>
+ <body class="bg-gray-100 relative flex flex-col min-h-screen">
+  <div aria-hidden="true" id="aurora-bg"></div>
+
+  <!-- Lightning bolts container -->
+  <div id="lightning-container" aria-hidden="true">
+    <div class="lightning-bolt strike1 left-edge"></div>
+    <div class="lightning-bolt strike2 left-edge2"></div>
+    <div class="lightning-bolt strike3 right-edge"></div>
+    <div class="lightning-bolt strike1 right-edge2"></div>
+  </div>
+
+  <header class="bg-gray-800 text-center py-6 relative z-10">
+   <h1 class="box-text">
+    &lt;/&gt; Yanz Xitz
+    <span class="info-text">Yanz Xitz adalah platform hosting terpercaya yang menyediakan layanan berkualitas tinggi untuk kebutuhan website Anda.</span>
+   </h1>
+  </header>
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 relative z-10 flex-grow">
+   <section class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    <article class="border-gray-300 rounded-lg flex flex-col items-center text-center shadow-sm hover:shadow-lg transition-shadow duration-300">
+     <img alt="Ilustrasi paket dasar hosting dengan ikon server dan simbol pemula" height="112" src="https://files.catbox.moe/zoniko.jpg" width="112"/>
+     <h2 class="text-gray-800 font-semibold">MOD MENU YANZ NS66</h2>
+     <p class="text-gray-600">Cocok Untuk Yang Susah Headshot</p>
+     <div class="text-red-600 font-bold">Rp 20.000/PERMANEN</div>
+     <button class="order-btn mt-4 inline-block" data-price="Rp 20.000/PERMANEN" data-product="MOD MENU YANZ NS66" type="button">Pesan Sekarang</button>
+    </article>
+    <article class="border-gray-300 rounded-lg flex flex-col items-center text-center shadow-sm hover:shadow-lg transition-shadow duration-300">
+     <img alt="Ilustrasi paket standar hosting dengan ikon server dan simbol bisnis kecil" height="112" src="https://files.catbox.moe/zoniko.jpg" width="112"/>
+     <h2 class="text-gray-800 font-semibold">YANZX MOD</h2>
+     <p class="text-gray-600">COCOK UNTUK MENYETABILKAN DAN 
+MENGARAHKAN KE KEPALA</p>
+     <div class="text-red-600 font-bold">Rp 15.000/PERMANEN</div>
+     <button class="order-btn mt-4 inline-block" data-price="Rp 15.000/PERMANEN" data-product="YANZX MOD" type="button">Pesan Sekarang</button>
+    </article>
+    <article class="border-gray-300 rounded-lg flex flex-col items-center text-center shadow-sm hover:shadow-lg transition-shadow duration-300">
+     <img alt="Ilustrasi paket premium hosting dengan ikon server dan simbol bisnis besar" height="112" src="https://files.catbox.moe/t79iu9.png" width="112"/>
+     <h2 class="text-gray-800 font-semibold">File stabilizer</h2>
+     <p class="text-gray-600">File ini untuk menyetabilkan aim kamu</p>
+     <div class="text-red-600 font-bold">Rp 12.000</div>
+     <button class="order-btn mt-4 inline-block" data-price="Rp 12.000" data-product="File stabilizer" type="button">Pesan Sekarang</button>
+    </article>
+    <article class="border-gray-300 rounded-lg flex flex-col items-center text-center shadow-sm hover:shadow-lg transition-shadow duration-300">
+     <img alt="Ilustrasi paket bisnis hosting dengan ikon server dan simbol perusahaan menengah" height="112" src="https://files.catbox.moe/t79iu9.png" width="112"/>
+     <h2 class="text-gray-800 font-semibold">Eazy Drag v5</h2>
+     <p class="text-gray-600">File ini untuk mempermudah headshot</p>
+     <div class="text-red-600 font-bold">Rp 15.000</div>
+     <button class="order-btn mt-4 inline-block" data-price="Rp 15.000" data-product="Eazy Drag v5" type="button">Pesan Sekarang</button>
+    </article>
+    <article class="border-gray-300 rounded-lg flex flex-col items-center text-center shadow-sm hover:shadow-lg transition-shadow duration-300">
+     <img alt="Ilustrasi paket enterprise hosting dengan ikon server dan simbol perusahaan besar" height="112" src="https://files.catbox.moe/t79iu9.png" width="112"/>
+     <h2 class="text-gray-800 font-semibold">Aimlock Putra v2</h2>
+     <p class="text-gray-600">File ini untuk mengerahkan peluru ke kepalar</p>
+     <div class="text-red-600 font-bold">Rp 10.000</div>
+     <button class="order-btn mt-4 inline-block" data-price="Rp 10.000" data-product="Aimlock Putra v2" type="button">Pesan Sekarang</button>
+    </article>
+    <article class="border-gray-300 rounded-lg flex flex-col items-center text-center shadow-sm hover:shadow-lg transition-shadow duration-300">
+     <img alt="Ilustrasi paket custom hosting dengan ikon server dan simbol solusi hosting khusus" height="112" src="https://files.catbox.moe/t79iu9.png" width="112"/>
+     <h2 class="text-gray-800 font-semibold">Config request</h2>
+     <p class="text-gray-600">Kalau kamu mau config bisa req</p>
+     <div class="text-red-600 font-bold">Rp 1.000</div>
+     <button class="order-btn mt-4 inline-block" data-price="Hubungi Kami" data-product="Config request" type="button">Pesan Sekarang</button>
+    </article>
+   </section>
+  </main>
+  <footer class="bg-gray-800 text-center py-6 relative z-10">
+   <p class="yanz-box select-none">&lt;/&gt; Yanz Dev &lt;/&gt;</p>
+   <p class="yanz-info">
+    Yanz Dev adalah pengembang web profesional yang menyediakan solusi hosting terbaik dan layanan pengembangan web berkualitas tinggi untuk memenuhi kebutuhan bisnis Anda.
+   </p>
+  </footer>
+  <button aria-label="Toggle sound playback" id="sound-button" title="Play/Pause Sound">
+   <i class="fas fa-volume-up fa-lg"></i>
+  </button>
+  <div aria-labelledby="modalTitle" aria-modal="true" id="payment-modal" role="dialog">
+   <div class="modal">
+    <div class="modal-header" id="modalTitle">Pembayaran</div>
+    <div class="modal-body">
+     <div class="product" id="modal-product">Produk</div>
+     <div class="price" id="modal-price">Harga</div>
+     <div class="qr" tabindex="0" role="button" aria-label="Perbesar QR Code pembayaran">
+      <img alt="QR Code pembayaran" height="150" id="modal-qr" src="https://storage.googleapis.com/a1aa/image/26a7fd02-032e-4175-f104-69e5c513802e.jpg" width="150"/>
+     </div>
+     <div class="dana-number">Nomor DANA: 085710604378</div>
+     <div class="upload-section">
+      <input aria-label="Unggah bukti transfer" id="bukti-transfer" type="file"/>
+     </div>
+     <a aria-label="Hubungi via WhatsApp" class="whatsapp-btn" href="#" id="modal-whatsapp" rel="noopener" target="_blank">Hubungi via WhatsApp</a>
+     <div aria-disabled="true" class="confirm-btn">Konfirmasi Pembayaran</div>
+     <div aria-label="Tutup popup pembayaran" class="close-btn" role="button" tabindex="0">Tutup</div>
+    </div>
+   </div>
+  </div>
+  <div aria-atomic="true" aria-live="assertive" id="notification" role="alert">
+   <i class="fas fa-qrcode"></i>
+   SCAN QR OR NOPE
+  </div>
+
+  <!-- QR Zoom Overlay -->
+  <div id="qr-zoom-overlay" role="dialog" aria-modal="true" aria-label="Gambar QR Code diperbesar" tabindex="0">
+   <img alt="Gambar QR Code pembayaran diperbesar" id="qr-zoom-image" src="" />
+  </div>
+
+  <script>
+   const modal = document.getElementById('payment-modal');
+   const modalProduct = document.getElementById('modal-product');
+   const modalPrice = document.getElementById('modal-price');
+   const modalWhatsapp = document.getElementById('modal-whatsapp');
+   const modalQr = document.getElementById('modal-qr');
+   const closeBtn = modal.querySelector('.close-btn');
+   const notification = document.getElementById('notification');
+   const soundButton = document.getElementById('sound-button');
+   const qrZoomOverlay = document.getElementById('qr-zoom-overlay');
+   const qrZoomImage = document.getElementById('qr-zoom-image');
+   let notificationTimeout;
+
+   // Create audio element
+   const audio = new Audio('https://files.catbox.moe/xfep9t.mp3');
+   audio.loop = true;
+   let isPlaying = false;
+
+   function showNotification() {
+     clearTimeout(notificationTimeout);
+     notification.classList.add('show');
+     notificationTimeout = setTimeout(() => {
+       notification.classList.remove('show');
+     }, 3000);
+   }
+
+   document.querySelectorAll('.order-btn').forEach(button => {
+     button.addEventListener('click', () => {
+       const product = button.getAttribute('data-product');
+       const price = button.getAttribute('data-price');
+
+       modalProduct.textContent = product;
+       modalPrice.textContent = 'Harga: ' + price;
+
+       // Update WhatsApp link with product and price info
+       const waNumber = '62882015857798';
+       const waText = encodeURIComponent(`Saya ingin memesan ${product} dengan harga ${price}`);
+       modalWhatsapp.href = `https://wa.me/${waNumber}?text=${waText}`;
+       modalWhatsapp.setAttribute('aria-label', `Hubungi via WhatsApp untuk memesan ${product}`);
+
+       // Update QR alt text
+       modalQr.alt = `QR Code pembayaran untuk produk ${product} dengan harga ${price}`;
+
+       modal.classList.add('active');
+       document.body.style.overflow = 'hidden';
+
+       // Show notification
+       showNotification();
+     });
+   });
+
+   closeBtn.addEventListener('click', () => {
+     modal.classList.remove('active');
+     document.body.style.overflow = '';
+   });
+
+   // Close modal on outside click
+   modal.addEventListener('click', (e) => {
+     if (e.target === modal) {
+       modal.classList.remove('active');
+       document.body.style.overflow = '';
+     }
+   });
+
+   // Close modal on Escape key
+   document.addEventListener('keydown', (e) => {
+     if (e.key === 'Escape') {
+       if (modal.classList.contains('active')) {
+         modal.classList.remove('active');
+         document.body.style.overflow = '';
+       }
+       if (qrZoomOverlay.classList.contains('active')) {
+         qrZoomOverlay.classList.remove('active');
+         document.body.style.overflow = '';
+       }
+     }
+   });
+
+   // Play sound on page load (try, but may be blocked)
+   window.addEventListener('load', () => {
+     audio.play().then(() => {
+       isPlaying = true;
+       updateSoundButtonIcon();
+     }).catch(() => {
+       // Autoplay blocked, do nothing
+       isPlaying = false;
+       updateSoundButtonIcon();
+     });
+   });
+
+   // Toggle sound playback on button click
+   soundButton.addEventListener('click', () => {
+     if (isPlaying) {
+       audio.pause();
+       isPlaying = false;
+     } else {
+       audio.play().then(() => {
+         isPlaying = true;
+         updateSoundButtonIcon();
+       }).catch(() => {
+         isPlaying = false;
+         updateSoundButtonIcon();
+       });
+     }
+     updateSoundButtonIcon();
+   });
+
+   function updateSoundButtonIcon() {
+     const icon = soundButton.querySelector('i');
+     if (isPlaying) {
+       icon.classList.remove('fa-volume-mute');
+       icon.classList.add('fa-volume-up');
+       soundButton.setAttribute('aria-label', 'Pause Sound');
+       soundButton.title = 'Pause Sound';
+     } else {
+       icon.classList.remove('fa-volume-up');
+       icon.classList.add('fa-volume-mute');
+       soundButton.setAttribute('aria-label', 'Play Sound');
+       soundButton.title = 'Play Sound';
+     }
+   }
+
+   // Zoom QR code image on click
+   const qrContainer = document.querySelector('#payment-modal .qr');
+   qrContainer.addEventListener('click', () => {
+     qrZoomImage.src = modalQr.src;
+     qrZoomImage.alt = modalQr.alt;
+     qrZoomOverlay.classList.add('active');
+     document.body.style.overflow = 'hidden';
+     qrZoomOverlay.focus();
+   });
+
+   // Also allow keyboard activation (Enter or Space) for accessibility
+   qrContainer.addEventListener('keydown', (e) => {
+     if (e.key === 'Enter' || e.key === ' ') {
+       e.preventDefault();
+       qrZoomImage.src = modalQr.src;
+       qrZoomImage.alt = modalQr.alt;
+       qrZoomOverlay.classList.add('active');
+       document.body.style.overflow = 'hidden';
+       qrZoomOverlay.focus();
+     }
+   });
+
+   // Close zoom overlay on click or Escape key
+   qrZoomOverlay.addEventListener('click', () => {
+     qrZoomOverlay.classList.remove('active');
+     document.body.style.overflow = '';
+   });
+  </script>
+ </body>
+</html>
